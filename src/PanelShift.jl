@@ -78,17 +78,17 @@ function tshift(tv, xv, n = oneunit(tv[1] - tv[1]); kwargs...)
     end
 end
 
-function panellag!(df, id, t, x, newx, n = oneunit(df.t[1]-df.t[1]); checksorted = true)
+function panellag!(df, id, t, x, newx, n = oneunit(df[1, t]-df[1, t]); checksorted = true)
     @argcheck (n > zero(n)) "n has to be strictly positive."
     transform!(groupby(df, id), [t, x] => ((t, x)->tlag(t, x, n; checksorted=checksorted)) => newx)
 end
 
-function panellead!(df, id, t, x, newx, n = oneunit(df.t[1]-df.t[1]); checksorted = true)
+function panellead!(df, id, t, x, newx, n = oneunit(df[1, t]-df[1, t]); checksorted = true)
     @argcheck (n > zero(n)) "n has to be strictly positive."
     transform!(groupby(df, id), [t, x] => ((t, x)->tlag(t, x, n; checksorted=checksorted)) => newx)
 end
 
-function panelshift!(df, id, t, x, newx, n = oneunit(df.t[1]-df.t[1]); kwargs...)
+function panelshift!(df, id, t, x, newx, n = oneunit(df[1, t]-df[1, t]); kwargs...)
     transform!(groupby(df, id), [t, x] => ((t, x)->tshift(t, x, n; checksorted=checksorted)) => newx)
 end
 
