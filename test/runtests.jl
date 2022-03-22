@@ -40,6 +40,9 @@ equalormi(x, y) = all([(ismissing(i) && ismissing(j)) || i == j for (i,j) in zip
 @test_throws ArgumentError tlag([1;2;], [1,2,3])
 @test_throws ArgumentError tlag([1;2;3], [1,2,3], 0)
 
+tlead([1;NaN;3], [4;5;6], 1)
+equalormi(tlead([1;2;3], [4;5;6], 1), [5; 6; missing])
+
 using DataFrames
 
 df = DataFrame(
