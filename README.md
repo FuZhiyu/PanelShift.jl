@@ -46,7 +46,7 @@ function panellag!(df, id, t, x, newx, n=oneunit(df[1, t] - df[1, t]); checksort
     return transform!(groupby(df, id), [t, x] => ((t, x) -> tlag(t, x, n; checksorted=checksorted)) => newx)
 end
 ```
-It groups `df` by `id`, apply `tlag` to `x` with respect to `t`, and store the lagged column in `df` under the name `newx`.
+It groups `df` by `id`, applies `tlag` to `x` with respect to `t`, and stores the lagged column in `df` under the name `newx`.
 
 As an example:
 ```julia
