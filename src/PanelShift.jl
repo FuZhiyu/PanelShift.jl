@@ -215,7 +215,7 @@ julia> panellead!(df, :id, :t, :x, :Fx)
 ```
 """
 function panellead!(df, id, t, x, newx, n=oneunit(df[1, t] - df[1, t]); checksorted=true)
-    return transform!(groupby(df, id), [t, x] => ((t, x) -> tlag(t, x, n; checksorted=checksorted)) => newx)
+    return transform!(groupby(df, id), [t, x] => ((t, x) -> tlead(t, x, n; checksorted=checksorted)) => newx)
 end
 
 """
