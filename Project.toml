@@ -1,7 +1,7 @@
 name = "PanelShift"
 uuid = "d68e4d5e-4a60-4df1-b225-9a1636c75ae0"
 authors = ["Zhiyu Fu <fuzhiyu0@gmail.com> and contributors"]
-version = "0.1.0"
+version = "0.1.1"
 
 [deps]
 ArgCheck = "dce04be8-c92d-5529-be00-80e4d2c0e197"
