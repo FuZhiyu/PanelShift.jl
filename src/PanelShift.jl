@@ -133,7 +133,6 @@ function tlead(tv, xv, n=oneunit(tv[1] - tv[1]); checksorted=true)
     return tlead!(nxv, tv, xv, n; checksorted=checksorted)
 end
 
-
 """
     tshift(tv, xv, n=oneunit(tv[1] - tv[1]); kwargs...)
 
@@ -146,7 +145,6 @@ function tshift(tv, xv, n=oneunit(tv[1] - tv[1]); kwargs...)
         return tlead(tv, xv, -n; kwargs...)
     end
 end
-
 
 """
     panellag!(df, id, t, x, newx, n=oneunit(df[1, t] - df[1, t]); checksorted=true)
@@ -227,7 +225,7 @@ Call `tlag` if `n` is positive and `tlead` if `n` is negative.
 
 See also `panellead!`, `panellag!`.
 """
-function panelshift!(df, id, t, x, newx, n=oneunit(df[1, t] - df[1, t]); kwargs...)
+function panelshift!(df, id, t, x, newx, n=oneunit(df[1, t] - df[1, t]); checksorted=true)
     return transform!(groupby(df, id), [t, x] => ((t, x) -> tshift(t, x, n; checksorted=checksorted)) => newx)
 end
 
